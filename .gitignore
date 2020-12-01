@@ -1,0 +1,9 @@
+.nyc/
+
+.vscode/launch.json
+
+coverage/
+
+node_modules/
+
+lib/
