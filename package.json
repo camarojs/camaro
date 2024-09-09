@@ -1,0 +1,28 @@
+{
+  "name": "camaro",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "commitlint": "commitlint --config ./eng/.commitlintrc.json --edit",
+    "cspell": "cspell --config ./eng/cspell.config.json --quiet .",
+    "eslint": "eslint --config ./eng/eslint.config.js .",
+    "lint": "npm run cspell && npm run eslint",
+    "lint:staged": "lint-staged --config ./eng/.lintstagedrc.json",
+    "prepare": "husky",
+    "type-check": "tsc -b src/api/tsconfig.json --emitDeclarationOnly"
+  },
+  "devDependencies": {
+    "@camaro/eslint-config": "^1.0.1",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
+    "@types/node": "^22.5.4",
+    "cspell": "^8.14.2",
+    "esbuild": "^0.23.1",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.4.0"
+  }
+}
