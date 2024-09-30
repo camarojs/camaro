@@ -79,6 +79,7 @@ module.exports = [
     {
         files: ["test/**/*.ts"],
         rules: {
+            "@typescript-eslint/no-empty-function": "off",
             "@typescript-eslint/no-extraneous-class": "off",
             "@typescript-eslint/no-floating-promises": "off",
         },
