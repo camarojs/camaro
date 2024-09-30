@@ -13,6 +13,7 @@
     "lintstagedrc",
     "outdir",
     "outfile",
-    "subtests"
+    "subtests",
+    "tsbuildinfo"
   ]
 }

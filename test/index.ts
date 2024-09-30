@@ -7,10 +7,11 @@ import { spec } from "node:test/reporters";
 const stream = run({
     concurrency: true,
     globPatterns: ["test/**/*.test.ts"],
-});
-
-stream.on("test:fail", () => {
-    process.exitCode = 1;
+    setup(reporter) {
+        reporter.on("test:fail", () => {
+            process.exitCode = 1;
+        });
+    },
 });
 
 stream.compose(spec).pipe(process.stdout);

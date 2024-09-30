@@ -1,7 +1,6 @@
 {
   "extends": "@camaro/tsconfig/monorepo.json",
   "compilerOptions": {
-    "inlineSourceMap": true,
     "paths": {
       "@camaro/core": [
         "../src/index.ts"
