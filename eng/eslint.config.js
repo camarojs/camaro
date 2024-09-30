@@ -16,11 +16,11 @@ const typescriptRules = [
     ...tsEslint.configs.stylisticTypeChecked,
 ].reduce((acc, config) => ({ ...acc, ...config.rules }), {});
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
+/** @type {import('eslint').Linter.Config[]} */
 module.exports = [
     customized,
     eslint.configs.recommended,
-    { ignores: ["build/**"] },
+    { ignores: ["lib/**"] },
     {
         rules: {
             // #region Possible Problems
@@ -63,11 +63,11 @@ module.exports = [
 
     },
     {
-        files: ["eng/**/*.js", "scripts/**/*.js"],
+        files: ["eng/**/*.js"],
         languageOptions: { globals: { ...globals.node } },
     },
     {
-        files: ["src/**/*.ts"],
+        files: ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts"],
         languageOptions: {
             globals: { ...globals.node },
             parser: tsEslint.parser,
@@ -75,5 +75,12 @@ module.exports = [
         },
         plugins: { "@typescript-eslint": tsEslint.plugin },
         rules: { ...typescriptRules },
+    },
+    {
+        files: ["test/**/*.ts"],
+        rules: {
+            "@typescript-eslint/no-extraneous-class": "off",
+            "@typescript-eslint/no-floating-promises": "off",
+        },
     },
 ];

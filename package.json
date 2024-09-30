@@ -1,28 +1,36 @@
 {
-  "name": "camaro",
+  "name": "@camaro/core",
   "version": "0.0.1",
   "description": "",
+  "main": "lib/index.js",
   "scripts": {
+    "build": "TSX_TSCONFIG_PATH=./scripts/tsconfig.json tsx ./scripts/build.ts",
     "commitlint": "commitlint --config ./eng/.commitlintrc.json --edit",
     "cspell": "cspell --config ./eng/cspell.config.json --quiet .",
     "eslint": "eslint --config ./eng/eslint.config.js .",
     "lint": "npm run cspell && npm run eslint",
     "lint:staged": "lint-staged --config ./eng/.lintstagedrc.json",
+    "prebuild": "npm run type-check",
+    "prepack": "npm run rmdir -- lib && npm run build",
     "prepare": "husky",
-    "type-check": "tsc -b src/api/tsconfig.json --emitDeclarationOnly"
+    "rmdir": "TSX_TSCONFIG_PATH=./scripts/tsconfig.json tsx ./scripts/rmdir.ts",
+    "test": "TSX_TSCONFIG_PATH=./test/tsconfig.json node --enable-source-maps --experimental-test-coverage --import tsx ./test/index.ts",
+    "type-check": "tsc -b ./tsconfig.json --emitDeclarationOnly"
   },
   "devDependencies": {
     "@camaro/eslint-config": "^1.0.1",
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
-    "@types/node": "^22.5.4",
-    "cspell": "^8.14.2",
-    "esbuild": "^0.23.1",
-    "eslint": "^9.10.0",
+    "@camaro/tsconfig": "^1.0.3",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@types/node": "^22.7.4",
+    "cspell": "^8.14.4",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.11.1",
     "globals": "^15.9.0",
-    "husky": "^9.1.5",
+    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.4.0"
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
   }
 }

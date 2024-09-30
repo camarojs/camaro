@@ -11,6 +11,8 @@
     "endregion",
     "linebreak",
     "lintstagedrc",
-    "outdir"
+    "outdir",
+    "outfile",
+    "subtests"
   ]
 }

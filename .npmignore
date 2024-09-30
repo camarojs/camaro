@@ -1,0 +1,11 @@
+.husky/
+.vscode/
+eng/
+lib/**/*.tsbuildinfo
+node_modules/
+scripts/
+src/
+test/
+.gitignore
+package-lock.json
+tsconfig.json
