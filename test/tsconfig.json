@@ -2,9 +2,18 @@
   "extends": "@camaro/tsconfig/monorepo.json",
   "compilerOptions": {
     "paths": {
-      "@camaro/core": [
-        "../src/index.ts"
-      ]
+      "@common/*": [
+        "../src/common/*"
+      ],
+      "@core/*": [
+        "../src/core/*"
+      ],
+      "@decorators/*": [
+        "../src/decorators/*"
+      ],
+      "@di/*": [
+        "../src/di/*"
+      ],
     }
   },
   "references": [

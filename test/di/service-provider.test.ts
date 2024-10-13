@@ -1,4 +1,5 @@
-import { ServiceLifeTime, ServiceProvider } from "@camaro/core";
+import ServiceLifetime from "@di/service-lifetime";
+import ServiceProvider from "@di/service-provider";
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
@@ -7,7 +8,7 @@ describe("ServiceProvider", () => {
         const Service = class { };
         const provider = new ServiceProvider();
 
-        provider.register("service", Service, ServiceLifeTime.Singleton);
+        provider.register("service", Service, ServiceLifetime.Singleton);
 
         const service1 = provider.resolve("service");
         const service2 = provider.resolve("service");
@@ -19,7 +20,7 @@ describe("ServiceProvider", () => {
         const Service = class { };
         const provider = new ServiceProvider();
 
-        provider.register("service", Service, ServiceLifeTime.Transient);
+        provider.register("service", Service, ServiceLifetime.Transient);
 
         const service1 = provider.resolve("service");
         const service2 = provider.resolve("service");
@@ -31,8 +32,8 @@ describe("ServiceProvider", () => {
         const Service = class { };
         const provider = new ServiceProvider();
 
-        provider.register("service", Service, ServiceLifeTime.Singleton);
-        provider.register("service", Service, ServiceLifeTime.Singleton);
+        provider.register("service", Service, ServiceLifetime.Singleton);
+        provider.register("service", Service, ServiceLifetime.Singleton);
 
         const services = provider.resolveAll("service");
 

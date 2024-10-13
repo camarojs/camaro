@@ -1,4 +1,8 @@
-import { Constructor, Injectable, ServiceLifeTime, ServiceProvider } from "@camaro/core";
+import { Constructor } from "@common/types";
+import Injectable from "@decorators/injectable";
+import ServiceLifeTime from "@di/service-lifetime";
+import ServiceProvider from "@di/service-provider";
+
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 

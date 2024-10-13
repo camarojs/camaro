@@ -1,5 +1,5 @@
-import ServiceProvider from "../service-provider";
-import { ServiceToken } from "../types";
+import ServiceProvider from "../di/service-provider";
+import { ServiceToken } from "../di/types";
 
 export function createInjectDecorator(token: ServiceToken, resolveAllServices?: boolean) {
     return <TThis, TValue>(

@@ -1,4 +1,7 @@
-import { Inject, InjectAll, ServiceLifeTime, ServiceProvider } from "@camaro/core";
+import Inject, { InjectAll } from "@decorators/inject";
+import ServiceLifetime from "@di/service-lifetime";
+import ServiceProvider from "@di/service-provider";
+
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 
@@ -19,7 +22,7 @@ describe("InjectAll", () => {
     }
 
     // Act
-    ServiceProvider.instance.register(MyService, MyService, ServiceLifeTime.Transient);
+    ServiceProvider.instance.register(MyService, MyService, ServiceLifetime.Transient);
     const accessor = InjectAll(MyService)({ get: () => { }, set: () => { } }, { kind: "accessor" } as DecoratorContext);
 
     // Assert
