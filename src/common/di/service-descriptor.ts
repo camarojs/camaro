@@ -1,6 +1,5 @@
-import { Constructor } from "../common/types";
+import { Constructor, ServiceToken } from "../types";
 import ServiceLifeTime from "./service-lifetime";
-import { ServiceToken } from "./types";
 
 export default class ServiceDescriptor {
     #serviceToken: ServiceToken;

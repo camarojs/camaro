@@ -1,8 +1,9 @@
 import { RequestListener, Server, ServerOptions } from "http";
 import { Stream } from "stream";
-import Context from "./context";
-import Request from "./request";
-import Response from "./response";
+import ContextStorage from "../common/context-storage";
+import Context from "./http/context";
+import Request from "./http/request";
+import Response from "./http/response";
 import { ComposedMiddleware, Middleware, Next } from "./types";
 
 export default class Application {
@@ -29,7 +30,9 @@ export default class Application {
         return (request: Request, response: Response) => {
             const context = new Context(request, response);
 
-            this.#handleRequest(context, middleware);
+            ContextStorage.run(context, () => {
+                this.#handleRequest(context, middleware);
+            });
         };
     }
 

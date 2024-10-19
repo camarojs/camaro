@@ -1,5 +1,5 @@
-import ContextStorage from "../common/context-storage";
-import Context from "./context";
+import ContextStorage from "../../common/context-storage";
+import Context from "../http/context";
 
 export default class ControllerBase {
     get request() {

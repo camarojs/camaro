@@ -1,5 +1,5 @@
+import { ServiceToken } from "../types";
 import ServiceDescriptor from "./service-descriptor";
-import { ServiceToken } from "./types";
 
 export default class ServiceCollection {
     #entities = new Map<ServiceToken, ServiceDescriptor[]>();

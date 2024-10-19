@@ -1,6 +1,6 @@
-import Inject, { InjectAll } from "@decorators/inject";
-import ServiceLifetime from "@di/service-lifetime";
-import ServiceProvider from "@di/service-provider";
+import ServiceLifetime from "@common/di/service-lifetime";
+import ServiceProvider from "@common/di/service-provider";
+import Inject, { InjectAll } from "@core/decorators/inject";
 
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";

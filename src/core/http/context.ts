@@ -1,4 +1,4 @@
-import { ContextStore } from "../common/types";
+import { ContextStore } from "../../common/types";
 import Request from "./request";
 import Response from "./response";
 

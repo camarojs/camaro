@@ -1,6 +1,6 @@
-import ServiceCollection from "@di/service-collection";
-import ServiceDescriptor from "@di/service-descriptor";
-import ServiceLifeTime from "@di/service-lifetime";
+import ServiceCollection from "@common/di/service-collection";
+import ServiceDescriptor from "@common/di/service-descriptor";
+import ServiceLifeTime from "@common/di/service-lifetime";
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 

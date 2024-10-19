@@ -1,7 +1,7 @@
-import { Constructor } from "../common/types";
-import ServiceLifeTime from "../di/service-lifetime";
-import ServiceProvider from "../di/service-provider";
-import { InjectableOptions } from "../di/types";
+import ServiceLifeTime from "../../common/di/service-lifetime";
+import ServiceProvider from "../../common/di/service-provider";
+import { Constructor } from "../../common/types";
+import { InjectableOptions } from "../types";
 
 export default function Injectable(options?: InjectableOptions) {
     return (target: Constructor, context: DecoratorContext) => {

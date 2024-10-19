@@ -1,7 +1,7 @@
+import ServiceLifeTime from "@common/di/service-lifetime";
+import ServiceProvider from "@common/di/service-provider";
 import { Constructor } from "@common/types";
-import Injectable from "@decorators/injectable";
-import ServiceLifeTime from "@di/service-lifetime";
-import ServiceProvider from "@di/service-provider";
+import Injectable from "@core/decorators/injectable";
 
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";

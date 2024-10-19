@@ -7,13 +7,7 @@
       ],
       "@core/*": [
         "../src/core/*"
-      ],
-      "@decorators/*": [
-        "../src/decorators/*"
-      ],
-      "@di/*": [
-        "../src/di/*"
-      ],
+      ]
     }
   },
   "references": [
