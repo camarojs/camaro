@@ -12,6 +12,6 @@ export default function Injectable(options?: InjectableOptions) {
         const serviceToken = options?.serviceToken ?? target;
         const lifetime = options?.lifetime ?? ServiceLifeTime.Singleton;
 
-        ServiceProvider.instance.register(serviceToken, target, lifetime);
+        ServiceProvider.register(serviceToken, target, lifetime);
     };
 }

@@ -1,6 +1,7 @@
 {
   "extends": "@camaro/tsconfig/monorepo.json",
   "compilerOptions": {
+    "outDir": "../out/test",
     "paths": {
       "@common/*": [
         "../src/common/*"

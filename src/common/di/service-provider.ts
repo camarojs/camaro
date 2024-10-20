@@ -5,11 +5,6 @@ import ServiceLifeTime from "./service-lifetime";
 
 export default class ServiceProvider {
     /**
-     * Global instance of the service provider.
-     */
-    static instance = new ServiceProvider();
-
-    /**
      * All registered services.
      */
     #services = new ServiceCollection();
@@ -67,5 +62,22 @@ export default class ServiceProvider {
         }
 
         return instance;
+    }
+
+    /**
+     * Global instance of the service provider.
+     */
+    static #instance = new ServiceProvider();
+
+    static register(serviceToken: ServiceToken, serviceType: Constructor, lifetime: ServiceLifeTime) {
+        this.#instance.register(serviceToken, serviceType, lifetime);
+    }
+
+    static resolve<T>(serviceToken: ServiceToken<T>): T {
+        return this.#instance.resolve(serviceToken);
+    }
+
+    static resolveAll<T>(serviceToken: ServiceToken<T>): T[] {
+        return this.#instance.resolveAll(serviceToken);
     }
 }

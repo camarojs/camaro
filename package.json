@@ -15,7 +15,7 @@
     "prepare": "husky",
     "rmdir": "TSX_TSCONFIG_PATH=./scripts/tsconfig.json tsx ./scripts/rmdir.ts",
     "test": "TSX_TSCONFIG_PATH=./test/tsconfig.json node --enable-source-maps --experimental-test-coverage --import tsx ./test/index.ts",
-    "type-check": "tsc -b ./tsconfig.json --emitDeclarationOnly"
+    "type-check": "tsc -b ./test/tsconfig.json --emitDeclarationOnly"
   },
   "devDependencies": {
     "@camaro/eslint-config": "^1.0.1",

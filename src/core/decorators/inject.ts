@@ -7,8 +7,8 @@ export function createInjectDecorator(token: ServiceToken, resolveAllServices?: 
         context: DecoratorContext,
     ): ClassAccessorDecoratorResult<TThis, TValue | TValue[]> => {
         const get = resolveAllServices
-            ? () => ServiceProvider.instance.resolveAll(token) as TValue[]
-            : () => ServiceProvider.instance.resolve(token) as TValue;
+            ? () => ServiceProvider.resolveAll(token) as TValue[]
+            : () => ServiceProvider.resolve(token) as TValue;
 
         switch (context.kind) {
             case "accessor":

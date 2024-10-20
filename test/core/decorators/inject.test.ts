@@ -22,7 +22,7 @@ describe("InjectAll", () => {
     }
 
     // Act
-    ServiceProvider.instance.register(MyService, MyService, ServiceLifetime.Transient);
+    ServiceProvider.register(MyService, MyService, ServiceLifetime.Transient);
     const accessor = InjectAll(MyService)({ get: () => { }, set: () => { } }, { kind: "accessor" } as DecoratorContext);
 
     // Assert

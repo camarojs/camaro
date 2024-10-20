@@ -12,7 +12,7 @@ describe("Injectable", () => {
         @Injectable({ lifetime: ServiceLifeTime.Transient })
         class MyService { }
         // Act
-        const service = ServiceProvider.instance.resolve(MyService);
+        const service = ServiceProvider.resolve(MyService);
 
         // Assert
         assert.ok(service instanceof MyService);

@@ -6,6 +6,7 @@ export { default as ServiceProvider } from "./common/di/service-provider";
 export * from "./common/types";
 
 export { default as Application } from "./core/application";
+export { default as Controller } from "./core/decorators/controller";
 export { default as Inject, InjectAll, createInjectDecorator } from "./core/decorators/inject";
 export { default as Injectable } from "./core/decorators/injectable";
 export { default as Context } from "./core/http/context";
