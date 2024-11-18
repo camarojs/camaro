@@ -3,7 +3,9 @@ import { Constructor, ServiceToken } from "../common/types";
 import Context from "./http/context";
 
 export type ComposedMiddleware = (context: Context, next?: Next) => Promise<void>;
+
 export type Middleware = (context: Context, next: Next) => Promise<void> | void;
+
 export type Next = () => Promise<void> | void;
 
 export interface InjectableOptions<T = unknown> {
@@ -14,4 +16,9 @@ export interface InjectableOptions<T = unknown> {
 export interface ControllerMetadata {
     path: string;
     target: Constructor;
+}
+
+export interface MatchedRoute {
+    handler?: CallableFunction;
+    params: Record<string, string>;
 }
