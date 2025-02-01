@@ -22,7 +22,6 @@ process.argv.slice(2).forEach((arg) => {
 
 const stream = run({
     concurrency: true,
-    // @ts-expect-error remove when types are updated
     execArgv: ["--enable-source-maps"],
     globPatterns: ["test/**/*.test.ts"],
     testNamePatterns,
@@ -31,7 +30,7 @@ const stream = run({
     coverageExcludeGlobs: ["test/**/*.test.ts"],
 
     branchCoverage: 90,
-    functionsCoverage: 90,
+    functionCoverage: 90,
     lineCoverage: 90,
 
     setup(reporter) {
