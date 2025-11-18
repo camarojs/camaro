@@ -1,0 +1,14 @@
+{
+  "name": "camaro-monorepo",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camarojs/camaro.git"
+  },
+  "author": "Dunn <wg0121@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/camarojs/camaro/issues"
+  },
+  "homepage": "https://github.com/camarojs/camaro#readme"
+}
