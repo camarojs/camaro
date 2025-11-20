@@ -1,13 +1,8 @@
 {
   "name": "@camaro/tsconfig",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+  "version": "1.2.0",
+  "description": "Shared TypeScript configuration presets for the Camaro monorepo.",
+  "keywords": ["typescript", "tsconfig", "config", "shared", "monorepo", "camaro"],
+  "author": "Dunn <wg0121@outlook.com>",
+  "license": "MIT"
 }
