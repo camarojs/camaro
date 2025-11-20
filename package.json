@@ -4,6 +4,13 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "commitlint": "commitlint --config ./eng/.commitlintrc.json --edit",
+    "cspell": "cspell --config ./eng/cspell.config.json --quiet .",
+    "lint": "npm run cspell",
+    "lint:staged": "lint-staged --config ./eng/.lintstagedrc.json",
+    "prepare": "husky || true"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/camarojs/camaro.git"
@@ -13,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/camarojs/camaro/issues"
   },
-  "homepage": "https://github.com/camarojs/camaro#readme"
+  "homepage": "https://github.com/camarojs/camaro#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "cspell": "^9.3.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
+  }
 }
