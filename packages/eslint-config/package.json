@@ -1,0 +1,12 @@
+{
+  "name": "@camaro/eslint-config",
+  "version": "3.5.2",
+  "description": "A shareable eslint config.",
+  "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {}
+}

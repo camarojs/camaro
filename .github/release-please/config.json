@@ -12,6 +12,10 @@
         "packages/tsconfig": {
             "release-type": "node",
             "tag-separator": "@"
+        },
+        "packages/eslint-config": {
+            "release-type": "node",
+            "tag-separator": "@"
         }
     }
 }
