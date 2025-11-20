@@ -5,6 +5,7 @@
   },
   "useGitignore": true,
   "words": [
-    "camaro"
+    "camaro",
+    "commitlintrc"
   ]
 }
