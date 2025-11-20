@@ -1,6 +1,9 @@
 {
   "name": "camaro-monorepo",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/camarojs/camaro.git"

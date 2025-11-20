@@ -1,3 +1,4 @@
 {
-  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/refs/heads/main/schemas/manifest.json"
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/refs/heads/main/schemas/manifest.json",
+  "packages/tsconfig": "1.2.0"
 }
