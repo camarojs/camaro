@@ -5,7 +5,7 @@ import { ts } from "../src/index.js";
 
 const eslint = new ESLint({
     overrideConfigFile: true,
-    baseConfig: ts as unknown as Linter.Config,
+    baseConfig: ts as Linter.Config,
 });
 
 const dummyFilePath = path.resolve(import.meta.dirname, "dummy.ts");

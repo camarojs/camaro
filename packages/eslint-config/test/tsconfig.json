@@ -1,13 +1,3 @@
 {
-  "extends": "@camaro/tsconfig/base.json",
-  "compilerOptions": {
-    "outDir": "./lib",
-    "moduleDetection": "force",
-    "noUnusedLocals": false
-  },
-  "references": [
-    {
-      "path": "../tsconfig.json"
-    }
-  ],
+  "extends": "@camaro/tsconfig/base.json"
 }
