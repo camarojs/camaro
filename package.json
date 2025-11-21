@@ -7,6 +7,7 @@
   ],
   "scripts": {
     "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
     "commitlint": "commitlint --config ./eng/.commitlintrc.json --edit",
     "cspell": "cspell --config ./eng/cspell.config.json --quiet .",
     "eslint": "eslint --config ./eng/eslint.config.js .",
@@ -31,6 +32,7 @@
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.47.0"
   }

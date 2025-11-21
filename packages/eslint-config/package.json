@@ -5,7 +5,8 @@
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
-    "build": "tsc -b --inlineSourceMap false"
+    "build": "tsc -b --inlineSourceMap false",
+    "test": "TSX_TSCONFIG_PATH=./test/tsconfig.json tsx ./test/index.ts"
   },
   "keywords": [],
   "dependencies": {

@@ -3,7 +3,8 @@
   "version": "1.2.0",
   "description": "Shared TypeScript configuration presets for the Camaro monorepo.",
   "scripts": {
-    "build": ""
+    "build": "",
+    "test": ""
   },
   "keywords": [
     "typescript",
