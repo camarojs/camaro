@@ -50,3 +50,5 @@ export const ts: TSESLint.FlatConfig.ConfigArray = [
         },
     },
 ];
+
+console.log("ESLint Config: eslint-config loaded");
