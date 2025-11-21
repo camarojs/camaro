@@ -1,0 +1,25 @@
+{
+  "name": "@camaro/eslint-config",
+  "version": "3.5.2",
+  "description": "A shareable eslint config.",
+  "type": "module",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc -b --inlineSourceMap false",
+    "test": "TSX_TSCONFIG_PATH=./test/tsconfig.json tsx ./test/index.ts"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin": "^5.6.1"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript-eslint": ">=8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript-eslint": {
+      "optional": true
+    }
+  }
+}
