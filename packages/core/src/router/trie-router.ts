@@ -22,8 +22,8 @@ export default class TrieRouter {
             }
 
             if (!node.children.has(key)) {
-                const node = new TrieNode(paramName);
-                node.children.set(key, node);
+                const child = new TrieNode(paramName);
+                node.children.set(key, child);
             }
 
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
