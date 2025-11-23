@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { describe, it } from "node:test";
-import TrieRouter from "../../src/router/trie-router.js";
+import { TrieRouter } from "../../src/router/trie-router.js";
 
 // Helper to create a no-op handler
 const noop = () => { /* empty */ };

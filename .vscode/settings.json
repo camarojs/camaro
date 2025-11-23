@@ -5,4 +5,7 @@
   "eslint.options": {
     "overrideConfigFile": "./eng/eslint.config.js",
   },
+  "eslint.workingDirectories": [
+    "."
+  ],
 }

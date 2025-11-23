@@ -1,7 +1,7 @@
 import { METHODS } from "node:http";
-import TrieNode from "./trie-node.js";
+import { TrieNode } from "./trie-node.js";
 
-export default class TrieRouter {
+export class TrieRouter {
     #root = new TrieNode();
 
     add(path: string, method: string, handler: CallableFunction) {

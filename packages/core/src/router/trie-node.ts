@@ -1,4 +1,4 @@
-export default class TrieNode {
+export class TrieNode {
     /**
      * Children nodes mapped by path segment
      */

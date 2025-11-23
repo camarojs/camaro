@@ -9,4 +9,15 @@ export default [
         files: ["eng/**/*.js"],
         languageOptions: { globals: { ...globals.node } },
     },
+    {
+        ignores: ["eng/**/*.js"],
+        rules: {
+            "no-restricted-exports": [
+                "error",
+                {
+                    restrictDefaultExports: { direct: true },
+                },
+            ],
+        },
+    },
 ];
