@@ -1,13 +1,13 @@
 import assert from "node:assert";
 import { describe, it } from "node:test";
-import { TrieRouter } from "../../src/router/trie-router.js";
+import { Router } from "../../src/router.js";
 
 // Helper to create a no-op handler
 const noop = () => { /* empty */ };
 
-void describe(TrieRouter.name, () => {
+void describe(Router.name, () => {
     void it("adds and finds a static route handler", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         const handler = () => "ok";
         router.add("/users", "GET", handler);
         const match = router.find("/users", "GET");
@@ -18,7 +18,7 @@ void describe(TrieRouter.name, () => {
     });
 
     void it("adds and finds a param route handler with params extracted", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         const handler = () => "user";
         router.add("/users/:id", "GET", handler);
         const match = router.find("/users/123", "GET");
@@ -29,7 +29,7 @@ void describe(TrieRouter.name, () => {
     });
 
     void it("adds and finds a param route handler with params extracted", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         const handler = () => "user";
         router.add("/users/:id", "GET", handler);
         const match = router.find("/users/123", "GET");
@@ -40,7 +40,7 @@ void describe(TrieRouter.name, () => {
     });
 
     void it("static segment takes precedence over param segment", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         const listHandler = () => "list";
         const userHandler = () => "user";
         router.add("/users/list", "GET", listHandler);
@@ -60,19 +60,19 @@ void describe(TrieRouter.name, () => {
     });
 
     void it("returns null for non-existent route", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         router.add("/users", "GET", noop);
         assert.strictEqual(router.find("/unknown", "GET"), null);
     });
 
     void it("returns null for existing route with different method", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         router.add("/users", "GET", noop);
         assert.strictEqual(router.find("/users", "POST"), null);
     });
 
     void it("method match is case-insensitive (add lower, find upper)", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         const handler = () => "ok";
         router.add("/ping", "get", handler);
         const match = router.find("/ping", "GET");
@@ -82,7 +82,7 @@ void describe(TrieRouter.name, () => {
     });
 
     void it("add throws for invalid HTTP method", () => {
-        const router = new TrieRouter();
+        const router = new Router();
         assert.throws(() => {
             router.add("/x", "FOO", noop);
         }, /Invalid HTTP method: FOO/);

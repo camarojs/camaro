@@ -1,7 +1,23 @@
 import { METHODS } from "node:http";
-import { TrieNode } from "./trie-node.js";
 
-export class TrieRouter {
+export class TrieNode {
+    /**
+     * Children nodes mapped by path segment
+     */
+    children = new Map<string, TrieNode>();
+    /**
+     * Handlers associated with this node, mapped by HTTP method
+     */
+    handlers = new Map<string, CallableFunction>();
+
+    /**
+     * Creates a new TrieNode
+     * @param paramName Parameter name if this node represents a dynamic segment
+     */
+    constructor(public paramName?: string) { }
+}
+
+export class Router {
     #root = new TrieNode();
 
     add(path: string, method: string, handler: CallableFunction) {
