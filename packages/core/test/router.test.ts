@@ -1,6 +1,6 @@
 import assert from "node:assert";
 import { describe, it } from "node:test";
-import { Router } from "../../src/router.js";
+import { Router } from "../src/router.js";
 
 // Helper to create a no-op handler
 const noop = () => { /* empty */ };
@@ -15,17 +15,6 @@ void describe(Router.name, () => {
         const m = match as { handler: CallableFunction; params: Record<string, string> };
         assert.strictEqual(m.handler, handler, "Handler should match");
         assert.deepStrictEqual(m.params, {}, "Params should be empty for static path");
-    });
-
-    void it("adds and finds a param route handler with params extracted", () => {
-        const router = new Router();
-        const handler = () => "user";
-        router.add("/users/:id", "GET", handler);
-        const match = router.find("/users/123", "GET");
-        assert.ok(match, "Expected to find param route");
-        const m = match as { handler: CallableFunction; params: Record<string, string> };
-        assert.strictEqual(m.handler, handler);
-        assert.deepStrictEqual(m.params, { id: "123" });
     });
 
     void it("adds and finds a param route handler with params extracted", () => {
