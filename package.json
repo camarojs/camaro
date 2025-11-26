@@ -9,6 +9,7 @@
     "build": "npm run build --workspaces",
     "test": "npm run test --workspaces",
     "type-check": "npm run type-check --workspaces",
+    "check-deps": "tsx ./scripts/check-deps.ts",
     "commitlint": "commitlint --config ./eng/.commitlintrc.json --edit",
     "cspell": "cspell --config ./eng/cspell.config.json --quiet .",
     "eslint": "eslint --config ./eng/eslint.config.js .",
@@ -30,6 +31,8 @@
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
+    "@eslint/js": "^9.39.1",
+    "@stylistic/eslint-plugin": "^5.6.1",
     "cspell": "^9.3.2",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
@@ -37,6 +40,7 @@
     "tsx": "^4.20.6",
     "type-fest": "^5.2.0",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.47.0"
+    "typescript-eslint": "^8.47.0",
+    "zod": "^4.1.13"
   }
 }
