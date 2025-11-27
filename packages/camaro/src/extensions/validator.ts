@@ -1,5 +1,5 @@
 import z from "zod";
-import { Context, ContextShape } from "../context.js";
+import { Context, ContextShape } from "../core/context.js";
 
 export type ValidationSchemas = {
     [key in keyof ContextShape]?: z.ZodType;

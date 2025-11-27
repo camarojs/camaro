@@ -11,6 +11,7 @@
     ],
     "packages": {
         "packages/tsconfig": {},
-        "packages/eslint-config": {}
+        "packages/eslint-config": {},
+        "packages/camaro": {}
     }
 }
