@@ -1,32 +1,30 @@
-import { METHODS } from "node:http";
+import { Protocol } from "./types.js";
 
-export class TrieNode {
+class TrieNode {
     /**
      * Children nodes mapped by path segment
      */
     children = new Map<string, TrieNode>();
     /**
-     * Handlers associated with this node, mapped by HTTP method
+     * Handlers associated with this node
      */
     handlers = new Map<string, CallableFunction>();
 
     /**
-     * Creates a new TrieNode
-     * @param paramName Parameter name if this node represents a dynamic segment
+     * Parameter name if this node represents a dynamic segment
      */
-    constructor(public paramName?: string) { }
+    paramName?: string;
+
+    constructor(paramName?: string) {
+        this.paramName = paramName;
+    }
 }
 
 export class Router {
-    #root = new TrieNode();
+    #http = new TrieNode();
 
-    add(path: string, method: string, handler: CallableFunction) {
-        if (!METHODS.includes(method.toUpperCase())) {
-            throw new Error(`Invalid HTTP method: ${method}`);
-        }
-
-        const segments = path.split("/").filter(Boolean);
-        let node = this.#root;
+    add(protocol: Protocol, segments: string[], method: string, handler: CallableFunction) {
+        let node = this.#getRootNode(protocol);
 
         for (const segment of segments) {
             let key = segment;
@@ -49,10 +47,9 @@ export class Router {
         node.handlers.set(method.toUpperCase(), handler);
     }
 
-    find(path: string, method: string) {
-        const segments = path.split("/").filter(Boolean);
+    find(protocol: Protocol, segments: string[], method: string) {
         const params: Record<string, string> = {};
-        let node = this.#root;
+        let node = this.#getRootNode(protocol);
 
         for (const segment of segments) {
             if (node.children.has(segment)) {
@@ -74,5 +71,14 @@ export class Router {
         const handler = node.handlers.get(method.toUpperCase());
 
         return handler ? { handler, params } : null;
+    }
+
+    #getRootNode(protocol: Protocol) {
+        switch (protocol) {
+            case Protocol.HTTP:
+                return this.#http;
+            default:
+                throw new Error(`Unsupported protocol: ${protocol}`);
+        }
     }
 }
