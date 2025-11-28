@@ -23,7 +23,7 @@ class TrieNode {
 export class Router {
     #http = new TrieNode();
 
-    add(protocol: Protocol, segments: string[], method: string, handler: CallableFunction) {
+    add(protocol: Protocol, segments: string[], operation: string, handler: CallableFunction) {
         let node = this.#getRootNode(protocol);
 
         for (const segment of segments) {
@@ -44,10 +44,10 @@ export class Router {
             node = node.children.get(key)!;
         }
 
-        node.handlers.set(method.toUpperCase(), handler);
+        node.handlers.set(operation, handler);
     }
 
-    find(protocol: Protocol, segments: string[], method: string) {
+    find(protocol: Protocol, segments: string[], operation: string) {
         const params: Record<string, string> = {};
         let node = this.#getRootNode(protocol);
 
@@ -68,7 +68,7 @@ export class Router {
             }
         }
 
-        const handler = node.handlers.get(method.toUpperCase());
+        const handler = node.handlers.get(operation);
 
         return handler ? { handler, params } : null;
     }
