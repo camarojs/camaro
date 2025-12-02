@@ -40,7 +40,7 @@ for (const dir of packageDirs) {
             if (rootVersion !== pkgVersion) {
                 console.error(
                     `Version mismatch for dependency "${depName}" in package "${pkg.name}": `
-                    + `root package.json has "${rootVersion}", but package has "${pkgVersion}"`,
+                    + `root package.json has "${rootVersion}", but package has "${String(pkgVersion)}"`,
                 );
                 process.exitCode = 1;
             }
