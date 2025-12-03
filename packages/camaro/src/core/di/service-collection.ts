@@ -1,6 +1,7 @@
 import { ServiceLifetime, ServiceProvider } from "../index.js";
 import { ServiceToken } from "../types.js";
 import { ServiceDescriptor } from "./service-descriptor.js";
+import { resolveTokenName } from "./utils.js";
 
 export class ServiceCollection {
     #descriptors = new Map<ServiceToken, ServiceDescriptor>();
@@ -38,6 +39,50 @@ export class ServiceCollection {
     }
 
     buildProvider(parent?: ServiceProvider) {
+        this.#detectCycles();
+        this.#detectLifetimeViolations();
+
         return new ServiceProvider(this.#descriptors, parent);
+    }
+
+    #detectCycles() {
+        const visiting = new Set<ServiceToken>();
+        const visited = new Set<ServiceToken>();
+
+        const visit = (token: ServiceToken, stack: ServiceToken[]) => {
+            if (visited.has(token)) {
+                return;
+            }
+
+            if (visiting.has(token)) {
+                const cycleStartIndex = stack.indexOf(token);
+                const cycle = stack.slice(cycleStartIndex).concat(token);
+                throw new Error(`Cyclic dependency detected: ${
+                    cycle.map(t => resolveTokenName(t)).join(" -> ")
+                }. Break the cycle by introducing an abstraction or reordering dependencies.`);
+            }
+
+            visiting.add(token);
+            stack.push(token);
+
+            const descriptor = this.#descriptors.get(token);
+            if (descriptor) {
+                for (const depToken of descriptor.dependencies) {
+                    visit(depToken, stack);
+                }
+            }
+
+            visiting.delete(token);
+            visited.add(token);
+            stack.pop();
+        };
+
+        for (const token of this.#descriptors.keys()) {
+            visit(token, []);
+        }
+    }
+
+    #detectLifetimeViolations() {
+        // TODO: Implement lifetime violation detection
     }
 }
