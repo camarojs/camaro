@@ -1,4 +1,4 @@
-import { ts } from "@camaro/eslint-config";
+import { ts } from "@camaro/eslint-config/typescript";
 import globals from "globals";
 
 /** @type {import('eslint').Linter.Config[]} */

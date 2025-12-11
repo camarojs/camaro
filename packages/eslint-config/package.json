@@ -3,7 +3,10 @@
   "version": "3.5.2",
   "description": "A shareable eslint config.",
   "type": "module",
-  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/common.js",
+    "./typescript": "./lib/typescript.js"
+  },
   "scripts": {
     "build": "tsc -b --inlineSourceMap false",
     "test": "tsx ./test/index.ts",
