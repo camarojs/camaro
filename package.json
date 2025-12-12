@@ -14,7 +14,8 @@
     "eslint": "eslint --config ./eng/eslint.config.js .",
     "lint": "npm run cspell && npm run eslint",
     "lint:staged": "lint-staged --config ./eng/.lintstagedrc.json",
-    "prepare": "husky || true"
+    "prepare": "husky || true",
+    "postinstall": "npm run build -w packages/eslint-config"
   },
   "repository": {
     "type": "git",
