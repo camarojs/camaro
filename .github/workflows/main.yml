@@ -1,3 +1,5 @@
+name: Main CI
+
 on:
   push:
     branches:
@@ -8,10 +10,12 @@ permissions:
   issues: write
   pull-requests: write
 
-name: release-please
 
 jobs:
+  build:
+    uses: camarojs/workflows/.github/workflows/build-nodejs.yml@v1
   release-please:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@v4

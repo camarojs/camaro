@@ -1,0 +1,11 @@
+name: Pull Request CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: camarojs/workflows/.github/workflows/build-nodejs.yml@v1
