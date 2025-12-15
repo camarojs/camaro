@@ -1,0 +1,40 @@
+name: Release CI
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "*-v*.*.*"
+
+permissions:
+  contents: read
+
+jobs:
+  resolve-package-path:
+    runs-on: ubuntu-latest
+    outputs:
+      package-path: ${{ steps.extract.outputs.package-path }}
+    steps:
+      - name: Extract package name from tag
+        id: extract
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          PACKAGE_PATH="${TAG%-v*}"
+          echo "package-path=${PACKAGE_PATH}" >> $GITHUB_OUTPUT
+
+  build:
+    needs: resolve-package-path
+    uses: camarojs/workflows/.github/workflows/build-nodejs.yml@v1
+    with:
+      upload-artifact: true
+      path-to-artifact: |
+        **/*
+        !node_modules/**
+
+  publish-to-npm:
+    needs: 
+      - build
+      - resolve-package-path
+    uses: camarojs/workflows/.github/workflows/npm-publish.yml@v1
+    with:
+      package-path: packages/${{ needs.resolve-package-path.outputs.package-path }}
