@@ -1,5 +1,5 @@
 {
   "packages/tsconfig": "1.2.0",
-  "packages/eslint-config": "4.0.0",
+  "packages/eslint-config": "4.1.0",
   "packages/camaro": "0.0.1"
 }
