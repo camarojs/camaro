@@ -57,8 +57,7 @@ export class ServiceCollection {
             if (visiting.has(token)) {
                 const cycleStartIndex = stack.indexOf(token);
                 const cycle = stack.slice(cycleStartIndex).concat(token);
-                throw new Error(`Cyclic dependency detected: ${
-                    cycle.map(t => resolveTokenName(t)).join(" -> ")
+                throw new Error(`Cyclic dependency detected: ${cycle.map(t => resolveTokenName(t)).join(" -> ")
                 }. Break the cycle by introducing an abstraction or reordering dependencies.`);
             }
 
@@ -83,6 +82,40 @@ export class ServiceCollection {
     }
 
     #detectLifetimeViolations() {
-        // TODO: Implement lifetime violation detection
+        const visit = (current: ServiceDescriptor, stack: ServiceDescriptor[]) => {
+            stack.push(current);
+
+            for (const token of current.dependencies) {
+                const dep = this.#descriptors.get(token);
+                if (!dep) {
+                    continue;
+                };
+
+                if (current.lifetime > dep.lifetime) {
+                    const chain = [...stack, dep];
+                    const chainStr = chain
+                        .map(x => `${String(x.token)}[${ServiceLifetime[x.lifetime]}]`)
+                        .join(" -> ");
+
+                    throw new Error(
+                        `Invalid lifetime dependency detected:\n`
+                        + `${String(current.token)}(${ServiceLifetime[current.lifetime]}) `
+                        + `depends on ${String(dep.token)}(${ServiceLifetime[dep.lifetime]})\n`
+                        + `Dependency chain: ${chainStr}`,
+                    );
+                }
+
+                if (!stack.includes(dep)) {
+                    visit(dep, stack);
+                }
+            }
+
+            stack.pop();
+        };
+
+        for (const descriptor of this.#descriptors.values()) {
+            const stack: ServiceDescriptor[] = [];
+            visit(descriptor, stack);
+        }
     }
 }
