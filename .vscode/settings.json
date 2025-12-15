@@ -5,4 +5,8 @@
   "eslint.options": {
     "overrideConfigFile": "./eng/eslint.config.js",
   },
+  "eslint.workingDirectories": [
+    "."
+  ],
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }

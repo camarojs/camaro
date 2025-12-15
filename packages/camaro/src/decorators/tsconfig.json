@@ -1,0 +1,9 @@
+{
+  "extends": "@camaro/tsconfig/monorepo.json",
+  "compilerOptions": {
+    "outDir": "../../lib/extensions"
+  },
+  "references": [{
+    "path": "../core/tsconfig.json"
+  }]
+}

@@ -1,4 +1,6 @@
 node_modules/
 
-packages/*/lib/
-packages/*/*.tsbuildinfo
+packages/**/lib/
+packages/**/*.tsbuildinfo
+
+examples/
