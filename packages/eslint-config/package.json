@@ -8,7 +8,7 @@
     "./typescript": "./lib/typescript.js"
   },
   "scripts": {
-    "build": "tsc -b --inlineSourceMap false",
+    "build": "tsc -p ./tsconfig.build.json",
     "test": "tsx ./test/index.ts",
     "type-check": "tsc --noEmit && tsc -p test/tsconfig.json --noEmit"
   },
