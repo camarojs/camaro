@@ -36,5 +36,7 @@ jobs:
       - build
       - resolve-package-path
     uses: camarojs/workflows/.github/workflows/npm-publish.yml@v1
+    permissions:
+      id-token: write
     with:
       package-path: packages/${{ needs.resolve-package-path.outputs.package-path }}
