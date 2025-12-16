@@ -10,8 +10,8 @@
         }
     ],
     "packages": {
-        "packages/tsconfig": {},
+        "packages/core": {},
         "packages/eslint-config": {},
-        "packages/core": {}
+        "packages/tsconfig": {}
     }
 }
