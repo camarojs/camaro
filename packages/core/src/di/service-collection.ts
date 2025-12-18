@@ -23,26 +23,26 @@ export class ServiceCollection {
         return this;
     }
 
-    addSingleton<T>(serviceToken: ServiceToken<T>, serviceType: new () => T) {
-        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Singleton);
-        this.add(descriptor);
+    addSingleton<T>(serviceToken: ServiceToken<T>, serviceType: new () => T, dependencies: ServiceToken[] = []) {
+        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Singleton, dependencies);
+        return this.add(descriptor);
     }
 
-    addTransient<T>(serviceToken: ServiceToken<T>, serviceType: new () => T) {
-        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Transient);
-        this.add(descriptor);
+    addTransient<T>(serviceToken: ServiceToken<T>, serviceType: new () => T, dependencies: ServiceToken[] = []) {
+        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Transient, dependencies);
+        return this.add(descriptor);
     }
 
-    addScoped<T>(serviceToken: ServiceToken<T>, serviceType: new () => T) {
-        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Scoped);
-        this.add(descriptor);
+    addScoped<T>(serviceToken: ServiceToken<T>, serviceType: new () => T, dependencies: ServiceToken[] = []) {
+        const descriptor = new ServiceDescriptor(serviceToken, serviceType, ServiceLifetime.Scoped, dependencies);
+        return this.add(descriptor);
     }
 
-    buildProvider(parent?: ServiceProvider) {
+    buildProvider() {
         this.#detectCycles();
         this.#detectLifetimeViolations();
 
-        return new ServiceProvider(this.#descriptors, parent);
+        return new ServiceProvider(this.#descriptors);
     }
 
     #detectCycles() {

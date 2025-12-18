@@ -3,5 +3,3 @@ export enum ServiceLifetime {
     Scoped = 1,
     Singleton = 2,
 }
-
-export const DI_DEPENDENCIES_KEY = Symbol("di:dependencies");
