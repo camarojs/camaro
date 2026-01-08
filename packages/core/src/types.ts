@@ -11,10 +11,10 @@ export type Middleware = (ctx: Context, next: Next) => Promise<void> | void;
 
 export type Next = () => Promise<void> | void;
 
-export enum ServiceLifetime {
-    Transient = 0,
-    Scoped = 1,
-    Singleton = 2,
-}
+export const ServiceLifetime = {
+    Transient: 0,
+    Scoped: 1,
+    Singleton: 2,
+} as const;
 
 export type ServiceToken<T = unknown> = Class<T> | string | symbol;
