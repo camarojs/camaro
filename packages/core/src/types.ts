@@ -17,4 +17,12 @@ export const ServiceLifetime = {
     Singleton: 2,
 } as const;
 
+export const ServiceLifetimeNames = {
+    [ServiceLifetime.Transient]: "Transient",
+    [ServiceLifetime.Scoped]: "Scoped",
+    [ServiceLifetime.Singleton]: "Singleton",
+} as const;
+
+export type ServiceLifetime = typeof ServiceLifetime[keyof typeof ServiceLifetime];
+
 export type ServiceToken<T = unknown> = Class<T> | string | symbol;

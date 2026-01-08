@@ -1,4 +1,4 @@
-import { ServiceLifetime, ServiceToken } from "../types.js";
+import { ServiceLifetime, ServiceLifetimeNames, ServiceToken } from "../types.js";
 import { ServiceDescriptor } from "./service-descriptor.js";
 import { ServiceProvider } from "./service-provider.js";
 import { resolveTokenName } from "./utils.js";
@@ -94,13 +94,13 @@ export class ServiceCollection {
                 if (current.lifetime > dep.lifetime) {
                     const chain = [...stack, dep];
                     const chainStr = chain
-                        .map(x => `${String(x.token)}[${ServiceLifetime[x.lifetime]}]`)
+                        .map(x => `${String(x.token)}[${ServiceLifetimeNames[x.lifetime]}]`)
                         .join(" -> ");
 
                     throw new Error(
                         `Invalid lifetime dependency detected:\n`
-                        + `${String(current.token)}(${ServiceLifetime[current.lifetime]}) `
-                        + `depends on ${String(dep.token)}(${ServiceLifetime[dep.lifetime]})\n`
+                        + `${String(current.token)}(${ServiceLifetimeNames[current.lifetime]}) `
+                        + `depends on ${String(dep.token)}(${ServiceLifetimeNames[dep.lifetime]})\n`
                         + `Dependency chain: ${chainStr}`,
                     );
                 }
