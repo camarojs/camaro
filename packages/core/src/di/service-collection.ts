@@ -1,4 +1,4 @@
-import { ServiceLifetime, ServiceLifetimeNames, ServiceToken } from "../types.js";
+import { ServiceLifetime, ServiceLifetimeNames, type ServiceToken } from "../types.js";
 import { ServiceDescriptor } from "./service-descriptor.js";
 import { ServiceProvider } from "./service-provider.js";
 import { resolveTokenName } from "./utils.js";

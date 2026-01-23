@@ -1,5 +1,5 @@
-import { Class } from "type-fest";
-import { ServiceLifetime, ServiceToken } from "../types.js";
+import { type Class } from "type-fest";
+import { type ServiceLifetime, type ServiceToken } from "../types.js";
 
 export class ServiceDescriptor<T = unknown> {
     #token: ServiceToken<T>;

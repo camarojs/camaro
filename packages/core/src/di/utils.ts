@@ -1,5 +1,5 @@
-import { ServiceToken } from "../types.js";
-import { ServiceDescriptor } from "./service-descriptor.js";
+import { type ServiceToken } from "../types.js";
+import { type ServiceDescriptor } from "./service-descriptor.js";
 
 export const resolveTokenName = (token: ServiceToken) => {
     if (typeof token === "function" && token.name) {

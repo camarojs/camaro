@@ -1,4 +1,4 @@
-import { ComposedMiddleware, Context, Middleware, Next } from "../types.js";
+import { type ComposedMiddleware, type Context, type Middleware, type Next } from "../types.js";
 
 /**
  * Composes multiple middleware functions into a single middleware function.

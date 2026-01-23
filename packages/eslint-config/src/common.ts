@@ -1,6 +1,6 @@
 import eslintJS from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
-import { Linter } from "eslint";
+import { type Linter } from "eslint";
 
 const styleLint = stylistic.configs.customize({
     indent: 4,
