@@ -19,6 +19,7 @@ export const ts: TSESLint.FlatConfig.ConfigArray = [
         plugins: { "@typescript-eslint": eslintTS.plugin },
         rules: {
             ...eslintTsRules,
+            "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
         },
     },
 ];
