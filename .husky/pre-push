@@ -1,3 +1,4 @@
+npm run build -w packages/eslint-config
 npm run lint
 npm run check-deps
 npm run type-check

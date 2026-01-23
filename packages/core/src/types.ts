@@ -1,4 +1,4 @@
-import { Class } from "type-fest";
+import { type Class } from "type-fest";
 
 export type ComposedMiddleware = (context: Context, next?: Next) => Promise<void>;
 

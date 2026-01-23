@@ -1,4 +1,4 @@
-import { ESLint, Linter } from "eslint";
+import { ESLint, type Linter } from "eslint";
 import assert from "node:assert";
 import path from "node:path";
 import { ts } from "../src/typescript.js";
