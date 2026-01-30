@@ -4,7 +4,6 @@ import { type Linter } from "eslint";
 
 const styleLint = stylistic.configs.customize({
     indent: 4,
-    jsx: false,
     quotes: "double",
     semi: true,
 });
