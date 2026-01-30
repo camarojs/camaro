@@ -11,7 +11,7 @@ const eslintTsRules = [
 export const ts: TSESLint.FlatConfig.ConfigArray = [
     ...common,
     {
-        files: ["**/*.ts"],
+        files: ["**/*.ts", "**/*.tsx"],
         languageOptions: {
             parser: eslintTS.parser,
             parserOptions: { projectService: true },
