@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.1...eslint-config-v0.1.2) (2026-01-30)
+
+
+### Features
+
+* **eslint-config:** enable jsx default ([#33](https://github.com/camarojs/camaro/issues/33)) ([7f5a8ff](https://github.com/camarojs/camaro/commit/7f5a8ffe6a53d2110c38e2deeb95f6c81c6fe006))
+
 ## [0.1.1](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.0...eslint-config-v0.1.1) (2026-01-23)
 
 
