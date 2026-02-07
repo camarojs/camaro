@@ -1,11 +1,11 @@
 import { ESLint, type Linter } from "eslint";
 import assert from "node:assert";
 import path from "node:path";
-import { ts } from "../src/typescript.js";
+import { createTypescriptLintConfig } from "../src/typescript.js";
 
 const eslint = new ESLint({
     overrideConfigFile: true,
-    baseConfig: ts as Linter.Config,
+    baseConfig: createTypescriptLintConfig({ files: ["**/*.ts"] }) as Linter.Config,
 });
 
 const dummyFilePath = path.resolve(import.meta.dirname, "dummy.ts");
