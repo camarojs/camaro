@@ -39,9 +39,11 @@ export default config;
 Create `eslint.config.js`:
 
 ```javascript
-import config from '@camaro/eslint-config/typescript';
+import { createTypescriptLintConfig } from '@camaro/eslint-config/typescript';
 
-export default config;
+export default createTypescriptLintConfig({
+    files: ['**/*.ts', '**/*.tsx']
+});
 ```
 
 ## Configuration Details

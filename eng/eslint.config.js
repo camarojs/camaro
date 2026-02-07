@@ -1,9 +1,9 @@
-import { ts } from "@camaro/eslint-config/typescript";
+import { createTypescriptLintConfig } from "@camaro/eslint-config/typescript";
 import globals from "globals";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    ...ts,
+    ...createTypescriptLintConfig({ files: ["**/*.ts"] }),
     { ignores: ["packages/**/lib/**/*"] },
     {
         files: ["eng/**/*.js"],
