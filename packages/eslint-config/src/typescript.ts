@@ -8,18 +8,20 @@ const eslintTsRules = [
     ...eslintTS.configs.stylisticTypeChecked,
 ].reduce<TSESLint.FlatConfig.Rules>((acc, config) => ({ ...acc, ...config.rules }), {});
 
-export const ts: TSESLint.FlatConfig.ConfigArray = [
-    ...common,
-    {
-        files: ["**/*.ts", "**/*.tsx"],
-        languageOptions: {
-            parser: eslintTS.parser,
-            parserOptions: { projectService: true },
+export const createTypescriptLintConfig = (files: string[]): TSESLint.FlatConfig.ConfigArray => {
+    return [
+        ...common,
+        {
+            files,
+            languageOptions: {
+                parser: eslintTS.parser,
+                parserOptions: { projectService: true },
+            },
+            plugins: { "@typescript-eslint": eslintTS.plugin },
+            rules: {
+                ...eslintTsRules,
+                "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
+            },
         },
-        plugins: { "@typescript-eslint": eslintTS.plugin },
-        rules: {
-            ...eslintTsRules,
-            "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
-        },
-    },
-];
+    ];
+};
