@@ -8,11 +8,15 @@ const eslintTsRules = [
     ...eslintTS.configs.stylisticTypeChecked,
 ].reduce<TSESLint.FlatConfig.Rules>((acc, config) => ({ ...acc, ...config.rules }), {});
 
-export const createTypescriptLintConfig = (files: string[]): TSESLint.FlatConfig.ConfigArray => {
+export interface TypescriptLintConfigOptions {
+    files: string[];
+}
+
+export const createTypescriptLintConfig = (options: TypescriptLintConfigOptions): TSESLint.FlatConfig.ConfigArray => {
     return [
         ...common,
         {
-            files,
+            files: options.files,
             languageOptions: {
                 parser: eslintTS.parser,
                 parserOptions: { projectService: true },
