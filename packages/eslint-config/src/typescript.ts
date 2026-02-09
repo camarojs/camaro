@@ -1,17 +1,13 @@
-import type { TSESLint } from "@typescript-eslint/utils";
 import eslintTS from "typescript-eslint";
 import { common } from "./common.js";
-import { defineConfig } from "eslint/config";
+import { defineConfig, type Config } from "eslint/config";
 
-export interface TypescriptLintConfigOptions {
-    files: string[];
-}
+export const createTypescriptLintConfig = (options: Config = {}) => {
+    const { languageOptions, rules, ...restOptions } = options;
 
-export const createTypescriptLintConfig = (options: TypescriptLintConfigOptions): TSESLint.FlatConfig.ConfigArray => {
     return defineConfig(
         common,
         {
-            files: options.files,
             extends: [
                 eslintTS.configs.recommendedTypeChecked,
                 eslintTS.configs.strictTypeChecked,
@@ -20,10 +16,13 @@ export const createTypescriptLintConfig = (options: TypescriptLintConfigOptions)
             languageOptions: {
                 parser: eslintTS.parser,
                 parserOptions: { projectService: true },
+                ...languageOptions,
             },
             rules: {
                 "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
+                ...rules,
             },
+            ...restOptions,
         },
     );
 };
