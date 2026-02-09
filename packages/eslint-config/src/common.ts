@@ -1,16 +1,16 @@
 import eslintJS from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
-import { type Linter } from "eslint";
+import { defineConfig } from "eslint/config";
 
-const styleLint = stylistic.configs.customize({
+const styleLintConfig = stylistic.configs.customize({
     indent: 4,
     quotes: "double",
     semi: true,
 });
 
-export const common: Linter.Config[] = [
+export const common = defineConfig(
     eslintJS.configs.recommended,
-    styleLint,
+    styleLintConfig,
     {
         rules: {
             "eqeqeq": "error",
@@ -24,4 +24,4 @@ export const common: Linter.Config[] = [
             "@stylistic/object-curly-newline": "error",
         },
     },
-];
+);
