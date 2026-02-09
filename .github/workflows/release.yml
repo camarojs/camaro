@@ -30,6 +30,7 @@ jobs:
       path-to-artifact: |
         packages/${{ needs.resolve-package-path.outputs.package-path }}/**
         package.json
+        package-lock.json
 
   publish-to-npm:
     needs: 
