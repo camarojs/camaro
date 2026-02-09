@@ -20,6 +20,17 @@ export const createTypescriptLintConfig = (options: Config = {}) => {
             },
             rules: {
                 "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
+                "@typescript-eslint/restrict-template-expressions": [
+                    "error",
+                    {
+                        allow: [{ name: ["Error", "URL", "URLSearchParams"], from: "lib" }],
+                        allowAny: true,
+                        allowBoolean: true,
+                        allowNullish: true,
+                        allowNumber: true,
+                        allowRegExp: true,
+                    },
+                ],
                 ...rules,
             },
             ...restOptions,
