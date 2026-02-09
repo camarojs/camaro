@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.3...eslint-config-v0.1.4) (2026-02-09)
+
+
+### Features
+
+* **eslint-config:** add additional rules for template expression restrictions in TypeScript config ([#40](https://github.com/camarojs/camaro/issues/40)) ([0a2565d](https://github.com/camarojs/camaro/commit/0a2565d0cfd0e2fa3b968c552ba18a30865dd7bb))
+
 ## [0.1.3](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.2...eslint-config-v0.1.3) (2026-02-09)
 
 
