@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.2...eslint-config-v0.1.3) (2026-02-09)
+
+
+### Features
+
+* **eslint-config:** update common and typescript lint configurations to use defineConfig ([#36](https://github.com/camarojs/camaro/issues/36)) ([11719df](https://github.com/camarojs/camaro/commit/11719df051cade69427c6ddfdad79e0558bcf372))
+
 ## [0.1.2](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.1...eslint-config-v0.1.2) (2026-01-30)
 
 
