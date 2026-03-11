@@ -1,13 +1,12 @@
-import { createTypescriptLintConfig } from "@camaro/eslint-config/typescript";
-import globals from "globals";
+import { defineTypescriptConfig } from "@camaro/eslint-config/typescript";
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-    ...createTypescriptLintConfig({ files: ["**/*.ts"] }),
-    { ignores: ["packages/**/lib/**/*"] },
+export default defineTypescriptConfig(
     {
-        files: ["eng/**/*.js"],
-        languageOptions: { globals: { ...globals.node } },
+        files: ["**/*.ts"],
+        globals: ["node"],
+    },
+    {
+        ignores: ["packages/**/lib/**/*"],
     },
     {
         ignores: ["eng/**/*.js"],
@@ -20,4 +19,4 @@ export default [
             ],
         },
     },
-];
+);
