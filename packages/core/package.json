@@ -21,6 +21,11 @@
   "dependencies": {
     "zod": "^4.1.13"
   },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "type-fest": "^5.4.4",
+    "typescript": "~5.9.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/camarojs/camaro.git"
