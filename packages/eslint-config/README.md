@@ -4,9 +4,11 @@ A shareable ESLint configuration preset for modern JavaScript and TypeScript pro
 
 ## Features
 
-- 🚀 Modern ESLint 9+ support with flat config
+- 🚀 Modern ESLint 10+ support with flat config
 - 📘 TypeScript support with type-checked rules
 - 🎨 Stylistic rules for consistent code formatting
+- 📦 Import sorting via `eslint-plugin-simple-import-sort`
+- 🌐 Configurable global categories (e.g. `browser`, `node`)
 - ⚡ Zero-config experience with sensible defaults
 - 📦 Modular design with optional dependencies
 
@@ -29,9 +31,23 @@ npm install --save-dev @camaro/eslint-config eslint typescript-eslint
 Create `eslint.config.js`:
 
 ```javascript
-import config from '@camaro/eslint-config';
+import { defineCommonConfig } from '@camaro/eslint-config';
 
-export default config;
+export default defineCommonConfig();
+```
+
+### With Options
+
+```javascript
+import { defineCommonConfig } from '@camaro/eslint-config';
+
+export default defineCommonConfig({
+    globals: ['browser', 'node'],
+    indent: 4,
+    quotes: 'double',
+    semi: true,
+    jsx: false,
+});
 ```
 
 ### TypeScript Configuration
@@ -39,10 +55,10 @@ export default config;
 Create `eslint.config.js`:
 
 ```javascript
-import { createTypescriptLintConfig } from '@camaro/eslint-config/typescript';
+import { defineTypescriptConfig } from '@camaro/eslint-config/typescript';
 
-export default createTypescriptLintConfig({
-    files: ['**/*.ts', '**/*.tsx']
+export default defineTypescriptConfig({
+    files: ['**/*.ts', '**/*.tsx'],
 });
 ```
 
@@ -50,45 +66,54 @@ export default createTypescriptLintConfig({
 
 ### Common Config
 
-The base configuration includes:
+The base configuration (`defineCommonConfig`) includes:
 
 - ESLint recommended rules
 - Stylistic rules (code formatting, line breaks, spacing)
-- Quality rules (eqeqeq, prefer-const)
-- 4-space indentation
-- Double quotes
-- Semicolons required
+- Import sorting rules (`simple-import-sort/imports`, `simple-import-sort/exports`)
+- Quality rules (`eqeqeq`, `prefer-const`)
+- Configurable globals via category names (e.g. `browser`, `node`, `es2021`)
+- Default stylistic options: 4-space indentation, double quotes, semicolons required, JSX disabled
 
 ### TypeScript Config
 
-The TypeScript configuration extends the common config and adds:
+The TypeScript configuration (`defineTypescriptConfig`) extends the common config and adds:
 
-- TypeScript ESLint recommended, strict, and stylistic rules
+- TypeScript ESLint recommended, strict, and stylistic type-checked rules
 - Type-aware linting with `projectService`
-- Support for `.ts` and `.tsx` files
-- Consistent type import rules
+- Consistent type import rules (`inline-type-imports`)
+- Template expression restriction rules with sensible defaults
 
 ## Rules
 
 ### Stylistic Rules
 
-- `array-bracket-newline`: Enforce consistent newlines in array brackets
-- `array-element-newline`: Enforce consistent newlines between array elements
-- `function-call-spacing`: Enforce no spacing between function names and invocations
-- `function-paren-newline`: Enforce multiline function arguments
-- `max-len`: Enforce 120 character line limit
-- `object-curly-newline`: Enforce consistent newlines in object brackets
+- `@stylistic/array-bracket-newline`: Enforce consistent newlines in array brackets
+- `@stylistic/array-element-newline`: Enforce consistent newlines between array elements
+- `@stylistic/function-call-spacing`: Enforce no spacing between function names and invocations
+- `@stylistic/function-paren-newline`: Enforce multiline function arguments
+- `@stylistic/max-len`: Enforce 120 character line limit
+- `@stylistic/object-curly-newline`: Enforce consistent newlines in object brackets
+
+### Import Sorting Rules
+
+- `simple-import-sort/imports`: Enforce sorted import declarations
+- `simple-import-sort/exports`: Enforce sorted export declarations
 
 ### Quality Rules
 
 - `eqeqeq`: Require strict equality operators
 - `prefer-const`: Prefer `const` declarations
-- `@typescript-eslint/consistent-type-imports`: Enforce consistent type import style
+
+### TypeScript Rules
+
+- `@typescript-eslint/consistent-type-imports`: Enforce consistent type import style (inline-type-imports)
+- `@typescript-eslint/restrict-template-expressions`: Restrict template literal expressions with sensible defaults
 
 ## Requirements
 
-- **eslint**: >= 9.0.0
-- **typescript-eslint**: >= 8.0.0 (optional, only needed for TypeScript projects)
+- **eslint**: >= 10.0.3
+- **typescript-eslint**: >= 8.57.0 (optional, only needed for TypeScript projects)
 
 ## License
 
