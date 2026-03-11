@@ -19,10 +19,17 @@ const packagesDir = path.resolve(rootDir, "packages");
 const packageMetadataFields = ["repository", "bugs", "homepage", "author", "license"] as const;
 
 const rootPkg = await import(rootPkgPath, { with: { type: "json" } }) as PackageJson;
-const rootDeps = {
-    ...rootPkg.dependencies,
-    ...rootPkg.devDependencies,
-};
+
+// Collect all packages (root + workspace packages)
+const allPackages: { name: string; deps: Record<string, string> }[] = [];
+
+allPackages.push({
+    name: rootPkg.name,
+    deps: {
+        ...rootPkg.dependencies,
+        ...rootPkg.devDependencies,
+    },
+});
 
 const packageDirs = await fs.readdir(packagesDir);
 
@@ -30,29 +37,52 @@ for (const dir of packageDirs) {
     const pkgPath = path.resolve(packagesDir, dir, "package.json");
     const pkg = await import(pkgPath, { with: { type: "json" } }) as PackageJson;
 
-    const pkgDeps = {
-        ...pkg.dependencies,
-        ...pkg.devDependencies,
-    };
+    allPackages.push({
+        name: pkg.name,
+        deps: {
+            ...pkg.dependencies,
+            ...pkg.devDependencies,
+        },
+    });
+}
 
-    for (const depName of Object.keys(pkgDeps)) {
-        if (!rootDeps[depName]) {
-            console.error(`Package "${pkg.name}" depends on "${depName}" which is not listed in the root package.json`);
-            process.exitCode = 1;
+// Build a map: depName -> Map<version, packageNames[]>
+const depVersionMap = new Map<string, Map<string, string[]>>();
+
+for (const pkg of allPackages) {
+    for (const [depName, version] of Object.entries(pkg.deps)) {
+        let versionMap = depVersionMap.get(depName);
+        if (!versionMap) {
+            versionMap = new Map();
+            depVersionMap.set(depName, versionMap);
+        }
+
+        const pkgList = versionMap.get(version);
+        if (pkgList) {
+            pkgList.push(pkg.name);
         }
         else {
-            const rootVersion = rootDeps[depName];
-            const pkgVersion = pkgDeps[depName];
-
-            if (rootVersion !== pkgVersion) {
-                console.error(
-                    `❌ Version mismatch for dependency "${depName}" in package "${pkg.name}": `
-                    + `root package.json has "${rootVersion}", but package has "${String(pkgVersion)}"`,
-                );
-                process.exitCode = 1;
-            }
+            versionMap.set(version, [pkg.name]);
         }
     }
+}
+
+// Report mismatches
+for (const [depName, versionMap] of depVersionMap) {
+    if (versionMap.size > 1) {
+        const details = [...versionMap.entries()]
+            .map(([version, pkgs]) => `  "${version}" in: ${pkgs.join(", ")}`)
+            .join("\n");
+
+        console.error(`❌ Version mismatch for "${depName}":\n${details}`);
+        process.exitCode = 1;
+    }
+}
+
+// Check metadata fields for workspace packages
+for (const dir of packageDirs) {
+    const pkgPath = path.resolve(packagesDir, dir, "package.json");
+    const pkg = await import(pkgPath, { with: { type: "json" } }) as PackageJson;
 
     for (const field of packageMetadataFields) {
         try {
@@ -68,5 +98,5 @@ for (const dir of packageDirs) {
 }
 
 if (!process.exitCode) {
-    console.log("✅ All package dependencies and metadata fields are consistent with the root package.json");
+    console.log("✅ All package dependencies and metadata fields are consistent");
 }
