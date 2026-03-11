@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.4...eslint-config-v0.2.0) (2026-03-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config:** eslint peer dependency now requires !!:s^10.0.3. The common export has been replaced with defineCommonConfig() function.
+
+### Features
+
+* **eslint-config:** upgrade to ESLint 10 and refactor config API ([29cb456](https://github.com/camarojs/camaro/commit/29cb456267c0b8744d812a305b2b44b2a03394f0))
+
 ## [0.1.4](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.3...eslint-config-v0.1.4) (2026-02-09)
 
 
