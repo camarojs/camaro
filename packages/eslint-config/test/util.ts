@@ -7,7 +7,7 @@ import { defineTypescriptConfig } from "../src/typescript.js";
 
 const eslint = new ESLint({
     overrideConfigFile: true,
-    baseConfig: defineTypescriptConfig({ files: ["**/*.ts"] }) as Linter.Config,
+    baseConfig: defineTypescriptConfig() as Linter.Config,
 });
 
 const dummyFilePath = path.resolve(import.meta.dirname, "dummy.ts");

@@ -1,9 +1,8 @@
-import { type ConfigWithExtendsArray } from "@eslint/config-helpers";
+import { type ConfigWithExtendsArray, type ExtendsElement } from "@eslint/config-helpers";
 import eslintJS from "@eslint/js";
 import stylistic, { type StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
 import { type Config, defineConfig } from "eslint/config";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
-import globals from "globals";
 
 const defaultStylisticOptions: StylisticCustomizeOptions = {
     indent: 4,
@@ -12,24 +11,12 @@ const defaultStylisticOptions: StylisticCustomizeOptions = {
     jsx: false,
 };
 
-export type GlobalCategory = keyof typeof globals;
-
 export interface CommonOptions extends StylisticCustomizeOptions {
-    globals?: GlobalCategory[];
+    extends?: ExtendsElement;
 }
 
-export const resolveGlobals = (globalCategories: GlobalCategory[] = []): Record<string, boolean> => {
-    const resolvedGlobals: Record<string, boolean> = {};
-
-    for (const category of globalCategories) {
-        Object.assign(resolvedGlobals, globals[category]);
-    }
-
-    return resolvedGlobals;
-};
-
 export const defineCommonConfig = (options: CommonOptions = {}, ...configs: ConfigWithExtendsArray): Config[] => {
-    const { globals: globalCategories = [], ...stylisticOptions } = options;
+    const { ...stylisticOptions } = options;
     const styleLintConfig = stylistic.configs.customize({
         ...defaultStylisticOptions,
         ...stylisticOptions,
@@ -41,11 +28,6 @@ export const defineCommonConfig = (options: CommonOptions = {}, ...configs: Conf
         {
             plugins: {
                 "simple-import-sort": simpleImportSort,
-            },
-        },
-        {
-            languageOptions: {
-                globals: resolveGlobals(globalCategories),
             },
             rules: {
                 "eqeqeq": "error",

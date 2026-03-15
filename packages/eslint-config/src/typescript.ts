@@ -2,23 +2,21 @@ import { type ConfigWithExtendsArray } from "@eslint/config-helpers";
 import { type Config, defineConfig } from "eslint/config";
 import eslintTS from "typescript-eslint";
 
-import { type CommonOptions, defineCommonConfig, resolveGlobals } from "./common.ts";
+import { type CommonOptions, defineCommonConfig } from "./common.ts";
 
-export interface TypescriptOptions extends CommonOptions {
-    files?: string[];
-}
+export type TypescriptOptions = CommonOptions;
 
 export const defineTypescriptConfig = (
     options: TypescriptOptions = {},
     ...configs: ConfigWithExtendsArray
 ): Config[] => {
-    const { files, ...commonOptions } = options;
+    const { ...commonOptions } = options;
     const common = defineCommonConfig(commonOptions);
 
     return defineConfig(
         common,
         {
-            files,
+            files: ["**/*.{ts,tsx,mts,cts}"],
             extends: [
                 eslintTS.configs.recommendedTypeChecked,
                 eslintTS.configs.strictTypeChecked,
@@ -27,7 +25,6 @@ export const defineTypescriptConfig = (
             languageOptions: {
                 parser: eslintTS.parser,
                 parserOptions: { projectService: true },
-                globals: resolveGlobals(options.globals),
             },
             rules: {
                 "@typescript-eslint/consistent-type-imports": ["error", { fixStyle: "inline-type-imports" }],
