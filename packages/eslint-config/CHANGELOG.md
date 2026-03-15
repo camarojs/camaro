@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/camarojs/camaro/compare/eslint-config-v0.2.0...eslint-config-v0.3.0) (2026-03-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config:** globals and files options removed from config API, consumers need to handle globals and file matching directly via ESLint languageOptions
+
+### Features
+
+* **eslint-config:** remove globals dep and refactor config API ([#45](https://github.com/camarojs/camaro/issues/45)) ([c81eced](https://github.com/camarojs/camaro/commit/c81eced2f53c91952c30bbeea08a727bd0346933))
+
 ## [0.2.0](https://github.com/camarojs/camaro/compare/eslint-config-v0.1.4...eslint-config-v0.2.0) (2026-03-11)
 
 
