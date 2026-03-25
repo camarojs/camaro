@@ -1,3 +1,8 @@
 {
-  "extends": "@camaro/tsconfig/base.json"
+  "extends": "@camaro/tsconfig/base.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  }
 }
