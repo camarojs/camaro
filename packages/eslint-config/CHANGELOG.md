@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/camarojs/camaro/compare/eslint-config-v0.3.0...eslint-config-v0.3.1) (2026-04-01)
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * devDependencies
+    * @camaro/tsconfig bumped from ^1.3.0 to ^1.4.0
+
 ## [0.3.0](https://github.com/camarojs/camaro/compare/eslint-config-v0.2.0...eslint-config-v0.3.0) (2026-03-15)
 
 
