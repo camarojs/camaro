@@ -3,7 +3,7 @@ import path from "node:path";
 
 import { ESLint, type Linter } from "eslint";
 
-import { defineTypescriptConfig } from "../src/typescript.js";
+import { defineTypescriptConfig } from "../src/typescript.ts";
 
 const eslint = new ESLint({
     overrideConfigFile: true,

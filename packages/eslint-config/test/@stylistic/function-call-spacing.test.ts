@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 
-import { lintText } from "../util.js";
+import { lintText } from "../util.ts";
 
 const ruleId = "@stylistic/function-call-spacing";
 
