@@ -15,12 +15,12 @@ jobs:
     outputs:
       package-path: ${{ steps.extract.outputs.package-path }}
     steps:
-      - name: Extract package name from tag
+      - name: Resolve package path from tag
         id: extract
         run: |
           TAG="${GITHUB_REF#refs/tags/}"
-          PACKAGE_PATH="${TAG%-v*}"
-          echo "package-path=${PACKAGE_PATH}" >> $GITHUB_OUTPUT
+          COMPONENT="${TAG%-v*}"
+          echo "package-path=packages/${COMPONENT}" >> "$GITHUB_OUTPUT"
 
   build:
     needs: resolve-package-path
@@ -28,7 +28,7 @@ jobs:
     with:
       upload-artifact: true
       path-to-artifact: |
-        packages/${{ needs.resolve-package-path.outputs.package-path }}/**
+        ${{ needs.resolve-package-path.outputs.package-path }}/**
         package.json
         package-lock.json
 
@@ -40,4 +40,4 @@ jobs:
     permissions:
       id-token: write
     with:
-      package-path: packages/${{ needs.resolve-package-path.outputs.package-path }}
+      package-path: ${{ needs.resolve-package-path.outputs.package-path }}
