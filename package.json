@@ -28,15 +28,15 @@
   "homepage": "https://github.com/camarojs/camaro#readme",
   "devDependencies": {
     "@camaro/tsconfig": "^1.4.0",
-    "@commitlint/cli": "^21.1.0",
+    "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.1.0",
-    "@types/node": "^25.9.4",
+    "@types/node": "^25.9.5",
     "cspell": "^10.0.1",
-    "eslint": "^10.5.0",
+    "eslint": "^10.7.0",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
+    "lint-staged": "^17.1.0",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.62.0"
+    "typescript-eslint": "^8.64.0"
   }
 }
