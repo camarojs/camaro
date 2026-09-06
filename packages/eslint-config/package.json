@@ -23,7 +23,7 @@
     "linting"
   ],
   "dependencies": {
-    "@eslint/config-helpers": "^0.6.0",
+    "@eslint/config-helpers": "^0.7.0",
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "eslint-plugin-simple-import-sort": "^13.0.0"

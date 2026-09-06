@@ -19,11 +19,11 @@
     "middleware"
   ],
   "dependencies": {
-    "zod": "^4.4.3"
+    "zod": "^4.5.4"
   },
   "devDependencies": {
     "@camaro/tsconfig": "^1.4.0",
-    "type-fest": "^5.7.0"
+    "type-fest": "^5.9.0"
   },
   "repository": {
     "type": "git",
