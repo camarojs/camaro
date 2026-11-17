@@ -11,7 +11,6 @@
     ],
     "packages": {
         "packages/core": {},
-        "packages/eslint-config": {},
-        "packages/tsconfig": {}
+        "packages/eslint-config": {}
     }
 }
