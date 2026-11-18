@@ -10,7 +10,6 @@
         }
     ],
     "packages": {
-        "packages/core": {},
-        "packages/eslint-config": {}
+        "packages/core": {}
     }
 }

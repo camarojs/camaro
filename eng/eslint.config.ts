@@ -1,6 +1,5 @@
+import { defineTypescriptConfig } from "@camaro/eslint-config/typescript";
 import globals from "globals";
-
-import { defineTypescriptConfig } from "../packages/eslint-config/src/typescript.ts";
 
 export default defineTypescriptConfig(
     {},
